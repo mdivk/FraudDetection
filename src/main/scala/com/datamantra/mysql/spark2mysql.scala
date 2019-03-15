@@ -1,10 +1,10 @@
-spark2-shell --driver-class-path mysql-connector-java-5.1.15.jar --jars /opt/cloudera/parcels/SPARK2/lk2/jars/mysql-connector-java-5.1.15.jar
+spark2-shell --driver-class-path mysql-connector-java-5.1.15.jar --jars /opt/cloudera/parcels/SPARK2/lib/spark2/jars/mysql-connector-java-5.1.15.jar
 
 import org.apache.spark.sql.SQLContext
 val sqlcontext = new org.apache.spark.sql.SQLContext(sc)
 val q="""select cc_num, first, last from customer"""
-val df3 = spark.read.format("jdbc").option("url", "jdbc:mysql://drivernode:3306/ccfd?useSSL=false").option("dbtable",  s"( $q ) t").option("user", "jdoe").option("password", "Password1").load()
-scala> df3.show
+val df = spark.read.format("jdbc").option("url", "jdbc:mysql://drivernode:3306/ccfd?useSSL=false").option("dbtable",  s"( $q ) t").option("user", "jdoe").option("password", "Password1").load()
+scala> df.show
 +----------------+--------+---------+
 |          cc_num|   first|     last|
 +----------------+--------+---------+
@@ -33,6 +33,7 @@ only showing top 20 rows
 
 
 NOTE:
-1. MySQL driver jar file should be same version for --driver-class-path and --jars
-2. For case of mysql exists in all worker nodes, the user should be granted privileges as 'jdoe'@'%'
-3. For case of mysql exists in only the driver node, the jdbc connection should indicate the drive node's hostname as jdbc:mysql://drivernode:3306
+1. third party jar file is saved in /opt/cloudera/parcels/SPARK2/lib/spark2/jars
+2. MySQL driver jar file should be same version for --driver-class-path and --jars
+3. For case of mysql exists in all worker nodes, the user should be granted privileges as 'jdoe'@'%'
+4. For case of mysql exists in only the driver node, the jdbc connection should indicate the drive node's hostname as jdbc:mysql://drivernode:3306
