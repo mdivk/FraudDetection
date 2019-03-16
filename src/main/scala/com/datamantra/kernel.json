@@ -1,0 +1,22 @@
+cat /usr/local/share/jupyter/kernels/apache_toree_scala/kernel.json
+{
+  "argv": [
+    "/usr/local/share/jupyter/kernels/apache_toree_scala/bin/run.sh",
+    "--profile",
+    "{connection_file}"
+  ],
+  "interrupt_mode": "signal",
+  "env": {
+    "__TOREE_SPARK_OPTS__": "",
+    "PYTHONPATH": "/opt/cloudera/parcels/SPARK2/lib/spark2/python:/opt/cloudera/parcels/SPARK2/lib/spark2/python/lib/py4j-0.10.7-src.zip",
+    "__TOREE_OPTS__": "",
+    "PYTHON_EXEC": "python",
+    "SPARK_HOME": "/opt/cloudera/parcels/SPARK2/lib/spark2",
+    "DEFAULT_INTERPRETER": "Scala",
+    "JAVA_HOME": "/usr/java/latest",
+    "EXTRA_CLASSPATH": "/opt/cloudera/parcels/SPARK2/lib/spark2/jars/mysql-connector-java-5.1.15.jar"
+  },
+  "metadata": {},
+  "display_name": "SPARK2/Scala",
+  "language": "scala"
+}
